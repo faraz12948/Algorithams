@@ -1,36 +1,45 @@
 #include <iostream>
 
 using namespace std;
-int linear_search(int arr[], int n , int x)
+void swap(int *pt1 , int *pt2)
 {
-        for(int i=0;i<n;i++)
+    int temp=*pt1;
+    *pt1=*pt2;
+    *pt2=temp;
+}
+void printarray(int arr[], int x)
+{
+    int i;
+    for(i=0; i<x;i++)
     {
-        if(arr[i]==x)
-            return i;
-
+        cout<<arr[i]<< endl;
+    }
+}
+void bubblesort(int arr[],int x)
+{
+    int i,j;
+    for(i=0;i<x-1;i++)
+    {
+        for(j=0;j<x-i-1;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
     }
 
-        return -1;
 }
 
 int main()
 {
-    int arr[]= {1,4,5,5,8,4};
-    int i,n,x;
-    n= sizeof(arr)/sizeof(arr[0]);
-    cin>>x;
-    int r =linear_search(arr,n,x);
-    if(r!= -1)
-    {
-        cout<<r<<endl;
-    }
-    else
-        cout<<"not found"<<endl;
+    int arr[]= {2,7,4,1,5,3};
+    int n;
 
+    n= sizeof(arr)/sizeof(arr[0]);
+    bubblesort(arr,n);
+    printarray(arr,n);
 
 
 
 }
-
-
-
